@@ -1,0 +1,32 @@
+<form style="width: 50%; margin: auto" [formGroup]="csvForm" (ngSubmit)='onSubmit(csvForm)'>
+
+  <mat-card>
+    <mat-form-field style="width: 100%">
+      <input matInput placeholder="Subject" formControlName="subject" />
+      <mat-error *ngIf="nameFormControl.hasError('minlength')">
+        subject must be at least 4 characters long.
+      </mat-error>
+      <mat-error *ngIf="nameFormControl.hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+<p style="margin-right: 660px;">Body</p>
+
+    <ckeditor #editor [(ngModel)]="model.description"
+    (change)="onChange($event)"
+    id="description"
+    name="description"
+    #ckeditor
+    type="divarea">
+  </ckeditor>
+    <div>
+   
+
+</div>
+  <input type="file"  accept=".xlsx, .csv" (change)="onFileUpload($event)" >
+<button mat-raised-button color="primary" type="submit" class="btn btn-outline-dark"> Submit</button>
+
+</mat-card>
+</form>
+
+
